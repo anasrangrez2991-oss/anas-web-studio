@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANAS WEB STUDIO // CREATIVE DIGITAL DOMINANCE</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Teko:wght@600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#ff1e43',
+                            redHover: '#e01234',
+                            darkBg: '#08080a',
+                            panelBg: '#0e0e12',
+                            panelBorder: '#22222c',
+                            lightBg: '#f8fafc',
+                            lightPanel: '#ffffff'
+                        }
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        teko: ['Teko', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Esports Angled Cut Buttons & Cards */
+        .clip-angled {
+            clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+        }
+
+        .clip-angled-sm {
+            clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+        }
+
+        /* Watermark Background */
+        .bg-watermark {
+            background-image: radial-gradient(circle at 50% 30%, rgba(255, 30, 67, 0.08) 0%, transparent 60%),
+                              radial-gradient(circle at 80% 80%, rgba(255, 30, 67, 0.04) 0%, transparent 40%);
+        }
+
+        /* Tactical Subtle Grid Line Texture */
+        .grid-texture {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+        }
+
+        .dark .grid-texture {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Glow Effects */
+        .glow-red {
+            box-shadow: 0 0 25px rgba(255, 30, 67, 0.4);
+        }
+
+        .glow-red-sm {
+            box-shadow: 0 0 12px rgba(255, 30, 67, 0.25);
+        }
+
+        /* Custom Physics Card Styling */
+        .physics-card {
+            position: absolute;
+            touch-action: none;
+            user-select: none;
+            cursor: grab;
+            white-space: nowrap;
+            will-change: transform;
+        }
+
+        .physics-card:active {
+            cursor: grabbing;
+        }
+
+        /* Toast Animation */
+        .toast-pop {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* RTL Layout Overrides */
+        [dir="rtl"] .rtl-flip {
+            transform: scaleX(-1);
+        }
+
+        /* Custom Scrollbar for Modal Grid */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.25);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #ff1e43;
+            border-radius: 4px;
+        }
+
+        /* Google Translate Stealth Styles */
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+        .goog-te-banner-frame, .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+        body > .skiptranslate {
+            display: none !important;
+        }
+        #goog-gt-tt, .goog-te-balloon-frame {
+            display: none !important;
+        }
+        .goog-text-highlight {
+            background: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 min-h-screen grid-texture selection:bg-brand-red selection:text-white transition-colors duration-300">
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/95 dark:bg-brand-darkBg/95 backdrop-blur-md border-b border-slate-200 dark:border-brand-panelBorder px-4 lg:px-8 py-3 transition-colors">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="relative w-10 h-10 bg-brand-red flex items-center justify-center clip-angled glow-red-sm group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-bullhorn text-white text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-orbitron font-extrabold text-xl tracking-wider text-slate-950 dark:text-white flex items-center gap-1">
+                        ANAS <span class="text-brand-red">STUDIO</span>
+                    </span>
+                    <span class="text-[9px] font-orbitron tracking-widest text-slate-600 dark:text-gray-400 uppercase font-bold">Esports Grade Web</span>
+                </div>
+            </a>
+
+            <!-- Right Nav Controls (Languages, Theme Toggle, Cart Counter, Menu) -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                
+                <!-- Multilingual Quick Switcher (Desktop) -->
+                <div class="hidden lg:flex bg-slate-100 dark:bg-brand-panelBg p-1 rounded-md border border-slate-200 dark:border-brand-panelBorder text-xs font-semibold">
+                    <button onclick="setLanguage('en', this)" class="lang-btn active px-2.5 py-1 rounded bg-brand-red text-white transition-all">EN</button>
+                    <button onclick="setLanguage('hi', this)" class="lang-btn px-2.5 py-1 rounded text-slate-800 dark:text-gray-300 hover:text-brand-red transition-all">HI</button>
+                    <button onclick="setLanguage('ur', this)" class="lang-btn px-2.5 py-1 rounded text-slate-800 dark:text-gray-300 hover:text-brand-red transition-all">UR</button>
+                    <button onclick="setLanguage('ar', this)" class="lang-btn px-2.5 py-1 rounded text-slate-800 dark:text-gray-300 hover:text-brand-red transition-all">AR</button>
+                </div>
+
+                <!-- ALL LANGUAGES (100+ World Languages) Trigger Button -->
+                <button onclick="openLanguageModal()" class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-brand-panelBg dark:hover:bg-brand-panelBorder border border-slate-200 dark:border-brand-panelBorder text-slate-950 dark:text-white font-orbitron text-xs font-bold transition-all clip-angled-sm group shadow-sm" title="Open Full 100+ Languages Matrix">
+                    <i class="fa-solid fa-globe text-brand-red text-sm group-hover:rotate-45 transition-transform"></i>
+                    <span id="header-lang-display" class="hidden sm:inline font-bold">LANGUAGES</span>
+                    <span class="bg-brand-red text-white text-[10px] px-1.5 py-0.5 rounded font-bold font-mono">100+</span>
+                </button>
+
+                <!-- Theme Switcher (Light / Dark) -->
+                <button onclick="toggleTheme()" class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-brand-panelBg border border-slate-200 dark:border-brand-panelBorder flex items-center justify-center text-slate-800 dark:text-yellow-400 hover:border-brand-red transition-colors shadow-sm" title="Toggle Light/Dark Theme">
+                    <i class="fa-solid fa-moon dark:hidden text-slate-800"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                </button>
+
+                <!-- Notification Counter Badge Button -->
+                <button onclick="scrollToCopySection()" class="relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-brand-panelBg border border-slate-200 dark:border-brand-panelBorder flex items-center justify-center text-slate-800 dark:text-white hover:border-brand-red transition-colors shadow-sm">
+                    <i class="fa-solid fa-shopping-bag text-sm"></i>
+                    <span class="absolute -top-1.5 -right-1.5 bg-brand-red text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-lg border-2 border-white dark:border-brand-darkBg">1</span>
+                </button>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-brand-panelBg border border-slate-200 dark:border-brand-panelBorder flex items-center justify-center text-slate-800 dark:text-white shadow-sm">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Language Selector Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden mt-3 pt-3 border-t border-slate-200 dark:border-brand-panelBorder flex flex-col gap-2.5">
+            <div class="flex justify-center gap-1.5 flex-wrap">
+                <button onclick="setLanguage('en', this)" class="lang-btn active px-3 py-1 rounded text-xs bg-brand-red text-white">English</button>
+                <button onclick="setLanguage('hi', this)" class="lang-btn px-3 py-1 rounded text-xs bg-slate-100 dark:bg-brand-panelBg text-slate-800 dark:text-gray-300">हिंदी</button>
+                <button onclick="setLanguage('ur', this)" class="lang-btn px-3 py-1 rounded text-xs bg-slate-100 dark:bg-brand-panelBg text-slate-800 dark:text-gray-300">اردو</button>
+                <button onclick="setLanguage('ar', this)" class="lang-btn px-3 py-1 rounded text-xs bg-slate-100 dark:bg-brand-panelBg text-slate-800 dark:text-gray-300">العربية</button>
+                <button onclick="setLanguage('fa', this)" class="lang-btn px-3 py-1 rounded text-xs bg-slate-100 dark:bg-brand-panelBg text-slate-800 dark:text-gray-300">فارسی</button>
+                <button onclick="setLanguage('es', this)" class="lang-btn px-3 py-1 rounded text-xs bg-slate-100 dark:bg-brand-panelBg text-slate-800 dark:text-gray-300">Español</button>
+            </div>
+            <button onclick="openLanguageModal()" class="w-full py-2 bg-brand-red/10 border border-brand-red/40 hover:bg-brand-red text-brand-red hover:text-white font-orbitron text-xs font-bold rounded clip-angled-sm flex items-center justify-center gap-2 transition-all">
+                <i class="fa-solid fa-globe text-sm"></i>
+                <span>ALL 100+ LANGUAGES // تمام زبانیں // सभी भाषाएं</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="relative pt-28 pb-12 lg:pt-36 lg:pb-16 px-4 bg-white dark:bg-brand-darkBg bg-watermark overflow-hidden transition-colors">
+        
+        <!-- Background Emblem Graphic Overlay -->
+        <div class="absolute inset-0 flex items-center justify-center opacity-[0.04] dark:opacity-10 pointer-events-none">
+            <i class="fa-solid fa-shield-halved text-[300px] lg:text-[500px] text-brand-red"></i>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            
+            <!-- Sharp Callout Tag Header -->
+            <div class="inline-flex items-center gap-2 bg-slate-100 dark:bg-black/60 border border-slate-300 dark:border-brand-panelBorder px-4 py-1.5 rounded-full mb-6 clip-angled-sm shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-brand-red animate-ping"></span>
+                <span id="tagline-badge" class="font-orbitron text-xs font-bold tracking-wider text-slate-900 dark:text-gray-300 uppercase">
+                    // ANAS WEB STUDIO // DISCIPLINE BUILDS DOMINANCE
+                </span>
+            </div>
+
+            <!-- Main High-Contrast Title -->
+            <h1 id="hero-title" class="font-orbitron font-black text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-slate-950 dark:text-white leading-none mb-6">
+                MORE THAN A <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-500">DIGITAL AGENCY.</span>
+            </h1>
+
+            <!-- Subtitle Statement -->
+            <p id="hero-subtitle" class="font-sans text-base sm:text-lg text-slate-700 dark:text-gray-400 max-w-2xl mx-auto mb-8 font-semibold leading-relaxed">
+                Built in the code server. Proven on live markets. <strong class="text-slate-950 dark:text-white">Every project engineered, not given.</strong> Custom websites & QR digital menus for top brands.
+            </p>
+
+            <!-- Dual Nox Style CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/919929606623?text=Hello%20Anas%20Web%20Studio,%20I%20want%20to%20build%20a%20website" target="_blank" class="w-full sm:w-auto bg-brand-red hover:bg-brand-redHover text-white font-orbitron font-extrabold text-sm sm:text-base px-8 py-4 clip-angled flex items-center justify-center gap-3 transition-all transform hover:-translate-y-0.5 glow-red">
+                    <span id="btn-rosters">MEET THE ROSTERS</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+
+                <button onclick="scrollToCopySection()" class="w-full sm:w-auto bg-slate-900 hover:bg-black dark:bg-brand-panelBg dark:hover:bg-brand-panelBorder border border-slate-900 dark:border-brand-panelBorder text-white font-orbitron font-extrabold text-sm sm:text-base px-8 py-4 clip-angled flex items-center justify-center gap-3 transition-all shadow-md">
+                    <i class="fa-solid fa-shopping-bag text-brand-red"></i>
+                    <span id="btn-merch">SHOP OFFICIAL SERVICES</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative w-full h-[380px] sm:h-[450px] bg-slate-50 dark:bg-black/40 border-y border-slate-200 dark:border-brand-panelBorder overflow-hidden">
+        
+        <!-- Canvas Heading Info -->
+        <div class="absolute top-4 left-0 w-full text-center z-10 pointer-events-none">
+            <span class="font-orbitron text-[11px] tracking-widest text-brand-red font-bold uppercase bg-brand-red/10 px-3 py-1 rounded border border-brand-red/30 shadow-sm">
+                <i class="fa-solid fa-hand-pointer mr-1"></i> Drag or Throw Skill Badges
+            </span>
+        </div>
+
+        <!-- HTML Interactive Floating Badges -->
+        <div id="physics-container" class="relative w-full h-full">
+            <div class="physics-card clip-angled bg-brand-red text-white px-5 py-3 font-orbitron text-xs sm:text-sm font-extrabold flex items-center gap-2 glow-red-sm shadow-md" id="badge-0">
+                <i class="fa-solid fa-code"></i> <span>CUSTOM WEBSITES</span>
+            </div>
+            <div class="physics-card clip-angled bg-white dark:bg-brand-panelBg text-slate-950 dark:text-white border-2 border-slate-900 dark:border-brand-panelBorder px-5 py-3 font-orbitron text-xs sm:text-sm font-extrabold flex items-center gap-2 shadow-md" id="badge-1">
+                <i class="fa-solid fa-qrcode text-brand-red"></i> <span>QR DIGITAL MENUS</span>
+            </div>
+            <div class="physics-card clip-angled bg-slate-900 dark:bg-brand-panelBg text-white border border-slate-900 dark:border-brand-panelBorder px-5 py-3 font-orbitron text-xs sm:text-sm font-extrabold flex items-center gap-2 shadow-md" id="badge-2">
+                <i class="fa-solid fa-bolt text-yellow-400"></i> <span>FAST DELIVERY</span>
+            </div>
+            <div class="physics-card clip-angled bg-brand-red text-white px-5 py-3 font-orbitron text-xs sm:text-sm font-extrabold flex items-center gap-2 glow-red-sm shadow-md" id="badge-3">
+                <i class="fa-solid fa-gift"></i> <span>FREE SAMPLE FIRST</span>
+            </div>
+            <div class="physics-card clip-angled bg-white dark:bg-brand-panelBg text-slate-950 dark:text-white border-2 border-slate-900 dark:border-brand-panelBorder px-5 py-3 font-orbitron text-xs sm:text-sm font-extrabold flex items-center gap-2 shadow-md" id="badge-4">
+                <i class="fa-brands fa-whatsapp text-emerald-600"></i> <span>DIRECT SUPPORT</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-8 bg-slate-50 dark:bg-brand-panelBg/80 border-b border-slate-200 dark:border-brand-panelBorder transition-colors">
+        <div class="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="p-4 bg-white dark:bg-black/30 border border-slate-200 dark:border-brand-panelBorder clip-angled-sm shadow-sm">
+                <div class="font-orbitron font-black text-2xl sm:text-3xl text-slate-950 dark:text-white">2026</div>
+                <div class="font-orbitron text-[10px] tracking-widest text-brand-red mt-1 uppercase font-bold">Established</div>
+            </div>
+            <div class="p-4 bg-white dark:bg-black/30 border border-slate-200 dark:border-brand-panelBorder clip-angled-sm shadow-sm">
+                <div class="font-orbitron font-black text-2xl sm:text-3xl text-slate-950 dark:text-white">OPEN</div>
+                <div class="font-orbitron text-[10px] tracking-widest text-slate-600 dark:text-gray-400 mt-1 uppercase font-bold">Qualifier Circuit</div>
+            </div>
+            <div class="p-4 bg-white dark:bg-black/30 border border-slate-200 dark:border-brand-panelBorder clip-angled-sm shadow-sm">
+                <div class="font-orbitron font-black text-2xl sm:text-3xl text-brand-red">100%</div>
+                <div class="font-orbitron text-[10px] tracking-widest text-slate-600 dark:text-gray-400 mt-1 uppercase font-bold">Victory Rate</div>
+            </div>
+            <div class="p-4 bg-white dark:bg-black/30 border border-slate-200 dark:border-brand-panelBorder clip-angled-sm shadow-sm">
+                <div class="font-orbitron font-black text-2xl sm:text-3xl text-slate-950 dark:text-white">24/7</div>
+                <div class="font-orbitron text-[10px] tracking-widest text-brand-red mt-1 uppercase font-bold">Active Servers</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="copy-section" class="py-16 px-4 max-w-4xl mx-auto">
+        
+        <div class="text-center mb-10">
+            <h2 id="copy-title" class="font-orbitron font-extrabold text-2xl sm:text-3xl text-slate-950 dark:text-white uppercase tracking-wider">
+                COMMUNICATION // <span class="text-brand-red">1-CLICK COPY</span>
+            </h2>
+            <p id="copy-desc" class="text-slate-600 dark:text-gray-400 text-sm mt-2 font-medium">Click any button below to copy instant contact channels directly to your clipboard.</p>
+        </div>
+
+        <div class="space-y-4">
+            
+            <!-- Email Card -->
+            <div class="bg-white dark:bg-brand-panelBg border-2 border-slate-200 dark:border-brand-panelBorder p-4 sm:p-5 clip-angled flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:border-brand-red shadow-sm">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-slate-100 dark:bg-black/50 border border-slate-200 dark:border-brand-panelBorder flex items-center justify-center text-brand-red text-xl clip-angled-sm">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                        <div class="text-[11px] font-orbitron text-slate-500 dark:text-gray-400 uppercase tracking-widest font-bold">Official Email Channel</div>
+                        <div class="font-mono text-sm sm:text-base font-bold text-slate-950 dark:text-white">anasrangrez2991@gmail.com</div>
+                    </div>
+                </div>
+                <button onclick="copyToClipboard('anasrangrez2991@gmail.com')" class="w-full sm:w-auto bg-brand-red hover:bg-brand-redHover text-white font-orbitron font-bold text-xs px-6 py-3 clip-angled-sm flex items-center justify-center gap-2 transition-colors">
+                    <i class="fa-regular fa-copy"></i>
+                    <span class="btn-copy-label">COPY ADDRESS</span>
+                </button>
+            </div>
+
+            <!-- WhatsApp Card -->
+            <div class="bg-white dark:bg-brand-panelBg border-2 border-slate-200 dark:border-brand-panelBorder p-4 sm:p-5 clip-angled flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:border-brand-red shadow-sm">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-slate-100 dark:bg-black/50 border border-slate-200 dark:border-brand-panelBorder flex items-center justify-center text-emerald-600 text-xl clip-angled-sm">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <div class="text-[11px] font-orbitron text-slate-500 dark:text-gray-400 uppercase tracking-widest font-bold">Direct WhatsApp Hotline</div>
+                        <div class="font-mono text-sm sm:text-base font-bold text-slate-950 dark:text-white">+91 9929606623</div>
+                    </div>
+                </div>
+                <button onclick="copyToClipboard('+919929606623')" class="w-full sm:w-auto bg-brand-red hover:bg-brand-redHover text-white font-orbitron font-bold text-xs px-6 py-3 clip-angled-sm flex items-center justify-center gap-2 transition-colors">
+                    <i class="fa-regular fa-copy"></i>
+                    <span class="btn-copy-label">COPY NUMBER</span>
+                </button>
+            </div>
+
+            <!-- Exclusive Offer Card -->
+            <div class="bg-white dark:bg-brand-panelBg border-2 border-slate-200 dark:border-brand-panelBorder p-4 sm:p-5 clip-angled flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:border-brand-red shadow-sm">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-slate-100 dark:bg-black/50 border border-slate-200 dark:border-brand-panelBorder flex items-center justify-center text-amber-500 text-xl clip-angled-sm">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                    <div>
+                        <div class="text-[11px] font-orbitron text-brand-red uppercase tracking-widest font-bold">Special Esports Offer</div>
+                        <div id="offer-text" class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-gray-200">Get a FREE interactive website demo tailored for your business!</div>
+                    </div>
+                </div>
+                <button onclick="copyToClipboard('Get a FREE interactive website demo tailored for your business!')" class="w-full sm:w-auto bg-brand-red hover:bg-brand-redHover text-white font-orbitron font-bold text-xs px-6 py-3 clip-angled-sm flex items-center justify-center gap-2 transition-colors">
+                    <i class="fa-regular fa-copy"></i>
+                    <span class="btn-copy-label">COPY OFFER</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-8 bg-slate-100 dark:bg-black border-t border-slate-200 dark:border-brand-panelBorder text-center transition-colors">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="font-orbitron text-xs text-slate-700 dark:text-gray-500 tracking-wider font-semibold">
+                © 2026 ANAS WEB STUDIO // ALL RIGHTS RESERVED // NOX STYLE DOMINANCE
+            </p>
+        </div>
+    </footer>
+
+    <div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 opacity-0 pointer-events-none toast-pop z-50 bg-brand-red text-white font-orbitron font-bold text-xs px-6 py-3 clip-angled shadow-2xl glow-red flex items-center gap-2">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-message">COPIED TO CLIPBOARD!</span>
+    </div>
+
+    <a href="https://wa.me/919929606623?text=Hello%20Anas%20Web%20Studio,%20I%20want%20to%20discuss%20a%20project" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-brand-red text-white clip-angled flex items-center justify-center text-2xl shadow-2xl glow-red hover:scale-110 transition-transform z-50 group">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- ================= FULL LANGUAGES MODAL (100+ LANGUAGES) ================= -->
+    <div id="language-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-md p-3 sm:p-6 transition-all duration-300 opacity-0 pointer-events-none">
+        <div class="relative w-full max-w-4xl max-h-[92vh] bg-white dark:bg-slate-900 border-2 border-slate-300 dark:border-brand-red/40 shadow-2xl clip-angled flex flex-col overflow-hidden text-slate-950 dark:text-white glow-red">
+            
+            <!-- Modal Header -->
+            <div class="p-4 sm:p-5 border-b border-slate-200 dark:border-brand-panelBorder bg-slate-50 dark:bg-black/60 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brand-red flex items-center justify-center clip-angled-sm glow-red-sm">
+                        <i class="fa-solid fa-globe text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-orbitron font-extrabold text-base sm:text-lg text-slate-950 dark:text-white tracking-wider flex items-center gap-2">
+                            GLOBAL MATRIX // <span class="text-brand-red">ALL LANGUAGES</span>
+                        </h3>
+                        <p class="text-[11px] sm:text-xs text-slate-600 dark:text-gray-400 font-sans">
+                            Handcrafted Instant Packs + Full 100+ World Languages AI Translation
+                        </p>
+                    </div>
+                </div>
+                <button onclick="closeLanguageModal()" class="w-9 h-9 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-brand-panelBg border border-slate-200 dark:border-brand-panelBorder flex items-center justify-center text-slate-700 dark:text-gray-400 hover:text-black dark:hover:text-white hover:border-brand-red transition-all shadow-sm">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+
+            <!-- Search & Filters -->
+            <div class="p-3 sm:p-4 bg-white dark:bg-brand-darkBg/95 border-b border-slate-200 dark:border-brand-panelBorder flex flex-col sm:flex-row gap-2.5 items-stretch sm:items-center justify-between">
+                <div class="relative flex-1">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs sm:text-sm"></i>
+                    <input type="text" id="lang-search-input" oninput="filterLanguages()" placeholder="Search language by name or script (Hindi, Urdu, Spanish, தமிழ், 日本語)..." class="w-full bg-slate-50 dark:bg-black/60 border border-slate-300 dark:border-brand-panelBorder focus:border-brand-red rounded-lg pl-9 pr-4 py-2 text-xs sm:text-sm text-slate-950 dark:text-white placeholder-slate-400 outline-none font-sans">
+                </div>
+                <div class="flex items-center gap-1.5 overflow-x-auto text-[11px] font-orbitron font-bold">
+                    <button onclick="setLangCategory('all', this)" class="lang-cat-btn active px-2.5 py-1.5 rounded bg-brand-red text-white">ALL</button>
+                    <button onclick="setLangCategory('instant', this)" class="lang-cat-btn px-2.5 py-1.5 rounded bg-slate-100 dark:bg-brand-panelBg text-slate-700 dark:text-gray-300 hover:text-black dark:hover:text-white border border-slate-200 dark:border-brand-panelBorder">⚡ INSTANT (14)</button>
+                    <button onclick="setLangCategory('indian', this)" class="lang-cat-btn px-2.5 py-1.5 rounded bg-slate-100 dark:bg-brand-panelBg text-slate-700 dark:text-gray-300 hover:text-black dark:hover:text-white border border-slate-200 dark:border-brand-panelBorder">🇮🇳 INDIAN</button>
+                    <button onclick="setLangCategory('rtl', this)" class="lang-cat-btn px-2.5 py-1.5 rounded bg-slate-100 dark:bg-brand-panelBg text-slate-700 dark:text-gray-300 hover:text-black dark:hover:text-white border border-slate-200 dark:border-brand-panelBorder">🌙 RTL</button>
+                </div>
+            </div>
+
+            <!-- Languages Grid -->
+            <div id="languages-grid" class="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-2.5 max-h-[55vh] bg-slate-50/50 dark:bg-transparent">
+                <!-- Populated dynamically by JS -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-3 sm:px-5 bg-slate-50 dark:bg-black/80 border-t border-slate-200 dark:border-brand-panelBorder flex items-center justify-between text-[11px] text-slate-600 dark:text-gray-400 font-sans">
+                <span id="lang-count-badge" class="font-mono text-brand-red font-semibold">Loaded 95+ Languages</span>
+                <span class="flex items-center gap-1 text-slate-700 dark:text-gray-300">
+                    <i class="fa-solid fa-bolt text-amber-500"></i> Instant Zero-Latency Available
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Hidden Google Translate Element -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        /* Multilingual Translation Data Structure (14 Handcrafted Native Packs) */
+        const translations = {
+            en: {
+                dir: 'ltr',
+                badge: '// ANAS WEB STUDIO // DISCIPLINE BUILDS DOMINANCE',
+                title: 'MORE THAN A <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">DIGITAL AGENCY.</span>',
+                subtitle: 'Built in the code server. Proven on live markets. <strong class="text-slate-900 dark:text-white">Every project engineered, not given.</strong> Custom websites & QR digital menus for top brands.',
+                btnRosters: 'MEET THE ROSTERS',
+                btnMerch: 'SHOP OFFICIAL SERVICES',
+                copyTitle: 'COMMUNICATION // <span class="text-brand-red">1-CLICK COPY</span>',
+                copyDesc: 'Click any button below to copy instant contact channels directly to your clipboard.',
+                btnCopy: 'COPY CONTENT',
+                toastCopied: 'COPIED TO CLIPBOARD!',
+                offerText: 'Get a FREE interactive website demo tailored for your business!',
+                badges: [
+                    'CUSTOM WEBSITES',
+                    'QR DIGITAL MENUS',
+                    'FAST DELIVERY',
+                    'FREE SAMPLE FIRST',
+                    'DIRECT SUPPORT'
+                ]
+            },
+            hi: {
+                dir: 'ltr',
+                badge: '// अनस वेब स्टूडियो // अनुशासन से सफलता मिलती है',
+                title: 'सिर्फ एक वेबसाइट नहीं <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">डिजिटल पावरहाउस।</span>',
+                subtitle: 'सर्वर में निर्मित। बाज़ार में साबित। <strong class="text-slate-900 dark:text-white">हर प्रोजेक्ट मेहनत से बनाया गया है।</strong> प्रीमियम कस्टम वेबसाइट्स और QR मेनू।',
+                btnRosters: 'टीम देखें',
+                btnMerch: 'सेवाएं देखें',
+                copyTitle: 'संपर्क करें // <span class="text-brand-red">1-क्लिक कॉपी</span>',
+                copyDesc: 'अपनी पसंद का संपर्क विवरण कॉपी करने के लिए नीचे बटन दबाएं।',
+                btnCopy: 'कॉपी करें',
+                toastCopied: 'क्लिपबोर्ड पर कॉपी हो गया!',
+                offerText: 'अपने व्यवसाय के लिए मुफ़्त इंटरैक्टिव वेबसाइट डेमो प्राप्त करें!',
+                badges: [
+                    'कस्टम वेबसाइट्स',
+                    'QR डिजिटल मेनू',
+                    'फास्ट डिलीवरी',
+                    'पहले फ्री सैंपल पाएं',
+                    'डायरेक्ट सपोर्ट'
+                ]
+            },
+            ur: {
+                dir: 'rtl',
+                badge: '// انس ویب اسٹوڈیو // نظم و ضبط برتری بناتا ہے',
+                title: 'صرف ایک ایجنسی نہیں <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">ڈیجیٹل پاور ہاؤس۔</span>',
+                subtitle: 'کوڈ سرور میں تیار شدہ۔ لائیو مارکیٹ میں ثابت قدم۔ <strong class="text-slate-900 dark:text-white">ہر پروجیکٹ لگن سے بنایا گیا ہے۔</strong> پریمیم کسٹم ویب سائٹس اور کیو آر مینو۔',
+                btnRosters: 'ٹیم سے ملیں',
+                btnMerch: 'آفیشل سروسز',
+                copyTitle: 'رابطہ کریں // <span class="text-brand-red">1-کلک کاپی</span>',
+                copyDesc: 'کسی بھی بٹن پر کلک کر کے فوری رابطہ معلومات اپنے کلپ بورڈ پر کاپی کریں۔',
+                btnCopy: 'کاپی کریں',
+                toastCopied: 'کلپ بورڈ پر کاپی ہو گیا!',
+                offerText: 'اپنے کاروبار کے لیے مفت انٹرایکٹو ویب سائٹ ڈیمو حاصل کریں!',
+                badges: [
+                    'کسٹم ویب سائٹس',
+                    'کیو آر ڈیجیٹل مینو',
+                    'تیز ترین ڈیلیوری',
+                    'پہلے مفت نمونہ',
+                    'براہ راست رابطہ'
+                ]
+            },
+            ar: {
+                dir: 'rtl',
+                badge: '// استوديو أنس // الانضباط يبني الهيمنة',
+                title: 'أكثر من مجرد <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">موقع إلكتروني.</span>',
+                subtitle: 'مبني في الخوادم البرمجية. أثبت جدارته في السوق. <strong class="text-slate-900 dark:text-white">كل مشروع تم تطويره بإتقان.</strong> مواقع مخصصة وقوائم QR.',
+                btnRosters: 'تعرف على الفريق',
+                btnMerch: 'تصفح الخدمات',
+                copyTitle: 'الاتصال // <span class="text-brand-red">نسخ بنقرة واحدة</span>',
+                copyDesc: 'انقر على أي زر أدناه لنسخ تفاصيل الاتصال مباشرة إلى الحافظة.',
+                btnCopy: 'نسخ البيانات',
+                toastCopied: 'تم النسخ إلى الحافظة!',
+                offerText: 'احصل على عرض توضيحي مجاني لموقع تفاعلي لعملك!',
+                badges: [
+                    'مواقع مخصصة',
+                    'قائمة طعام QR',
+                    'تسليم سريع',
+                    'عينة مجانية أولاً',
+                    'دعم مباشر'
+                ]
+            },
+            fa: {
+                dir: 'rtl',
+                badge: '// استوديو انس // انضباط باعث برتری است',
+                title: 'فراتر از یک <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">وبسایت معمولی.</span>',
+                subtitle: 'توسعه یافته در سرور. اثبات شده در بازار. <strong class="text-slate-900 dark:text-white">هر پروژه با دقت برنامهریزی شده.</strong> طراحی وبسایت و منوی دیجیتال QR.',
+                btnRosters: 'مشاهده اعضای تیم',
+                btnMerch: 'خدمات رسمی',
+                copyTitle: 'ارتباط با ما // <span class="text-brand-red">کپی با یک کلیک</span>',
+                copyDesc: 'روی هر دکمه کلیک کنید تا اطلاعات تماس سریعاً کپی شود.',
+                btnCopy: 'کپی اطلاعات',
+                toastCopied: 'در حافظه کپی شد!',
+                offerText: 'نمونه دمو رایگان وبسایت برای کسب و کار خود دریافت کنید!',
+                badges: [
+                    'وبسایت اختصاصی',
+                    'منوی دیجیتال QR',
+                    'تحویل سریع',
+                    'نمونه رایگان اول',
+                    'پشتیبانی مستقیم'
+                ]
+            },
+            es: {
+                dir: 'ltr',
+                badge: '// ANAS WEB STUDIO // LA DISCIPLINA CREA DOMINIO',
+                title: 'MÁS QUE UNA <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">AGENCIA DIGITAL.</span>',
+                subtitle: 'Construido en el código. Probado en el mercado. <strong class="text-slate-900 dark:text-white">Cada proyecto diseñado a medida.</strong> Sitios web personalizados y menús QR para marcas líderes.',
+                btnRosters: 'CONOCE AL EQUIPO',
+                btnMerch: 'SERVICIOS OFICIALES',
+                copyTitle: 'COMUNICACIÓN // <span class="text-brand-red">COPIA EN 1 CLIC</span>',
+                copyDesc: 'Haz clic en cualquier botón para copiar los canales de contacto a tu portapapeles.',
+                btnCopy: 'COPIAR',
+                toastCopied: '¡COPIADO AL PORTAPAPELES!',
+                offerText: '¡Obtén una demo interactiva GRATIS personalizada para tu negocio!',
+                badges: [
+                    'SITIOS WEB',
+                    'MENÚS QR',
+                    'ENTREGA RÁPIDA',
+                    'MUESTRA GRATIS',
+                    'SOPORTE DIRECTO'
+                ]
+            },
+            fr: {
+                dir: 'ltr',
+                badge: '// ANAS WEB STUDIO // LA DISCIPLINE FORGE LA DOMINATION',
+                title: 'PLUS QU\'UNE SIMPLE <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">AGENCE DIGITALE.</span>',
+                subtitle: 'Conçu dans le code. Éprouvé sur les marchés. <strong class="text-slate-900 dark:text-white">Chaque projet est une création d\'élite.</strong> Sites web sur mesure et menus QR.',
+                btnRosters: 'VOIR L\'ÉQUIPE',
+                btnMerch: 'NOS SERVICES',
+                copyTitle: 'COMMUNICATION // <span class="text-brand-red">COPIE EN 1 CLIC</span>',
+                copyDesc: 'Cliquez sur un bouton pour copier les coordonnées directement dans votre presse-papiers.',
+                btnCopy: 'COPIER',
+                toastCopied: 'COPIÉ DANS LE PRESSE-PAPIERS !',
+                offerText: 'Obtenez une démo web interactive GRATUITE pour votre entreprise !',
+                badges: [
+                    'SITES SUR MESURE',
+                    'MENUS QR',
+                    'LIVRAISON RAPIDE',
+                    'DÉMO GRATUITE',
+                    'SUPPORT DIRECT'
+                ]
+            },
+            de: {
+                dir: 'ltr',
+                badge: '// ANAS WEB STUDIO // DISZIPLIN SCHAFFT DOMINANZ',
+                title: 'MEHR ALS EINE <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">DIGITALE AGENTUR.</span>',
+                subtitle: 'Im Code erschaffen. Am Markt bewährt. <strong class="text-slate-900 dark:text-white">Jedes Projekt meisterhaft entwickelt.</strong> Maßgeschneiderte Websites & QR-Menüs.',
+                btnRosters: 'TEAM ANSEHEN',
+                btnMerch: 'OFFIZIELLE SERVICES',
+                copyTitle: 'KOMMUNIKATION // <span class="text-brand-red">1-KLICK KOPIE</span>',
+                copyDesc: 'Klicken Sie auf eine Schaltfläche, um Kontaktdaten in die Zwischenablage zu kopieren.',
+                btnCopy: 'KOPIEREN',
+                toastCopied: 'IN DIE ZWISCHENABLAGE KOPIERT!',
+                offerText: 'Holen Sie sich eine KOSTENLOSE interaktive Website-Demo für Ihr Unternehmen!',
+                badges: [
+                    'INDIVIDUELLE WEBSITES',
+                    'QR-SPEISEKARTEN',
+                    'SCHNELLE LIEFERUNG',
+                    'GRATIS VORSCHAU',
+                    'DIREKTER SUPPORT'
+                ]
+            },
+            ru: {
+                dir: 'ltr',
+                badge: '// ANAS WEB STUDIO // ДИСЦИПЛИНА СОЗДАЕТ ПРЕВОСХОДСТВО',
+                title: 'БОЛЬШЕ ЧЕМ ПРОСТО <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">ДИДЖИТАЛ АГЕНТСТВО.</span>',
+                subtitle: 'Создано в коде. Проверено на рынке. <strong class="text-slate-900 dark:text-white">Каждый проект спроектирован с нуля.</strong> Сайты под ключ и QR-меню.',
+                btnRosters: 'НАША КОМАНДА',
+                btnMerch: 'ВСЕ УСЛУГИ',
+                copyTitle: 'СВЯЗАТЬСЯ // <span class="text-brand-red">КОПИРОВАНИЕ В 1 КЛИК</span>',
+                copyDesc: 'Нажмите любую кнопку ниже, чтобы скопировать контакты в буфер обмена.',
+                btnCopy: 'СКОПИРОВАТЬ',
+                toastCopied: 'СКОПИРОВАНО В БУФЕР ОБМЕНА!',
+                offerText: 'Получите БЕСПЛАТНУЮ интерактивную демо-версию сайта для вашего бизнеса!',
+                badges: [
+                    'ИНДИВИДУАЛЬНЫЕ САЙТЫ',
+                    'QR-МЕНЮ ДЛЯ КАФЕ',
+                    'БЫСТРАЯ СДАЧА',
+                    'БЕСПЛАТНЫЙ ДЕМО',
+                    'ПРЯМАЯ ПОДДЕРЖКА'
+                ]
+            },
+            zh: {
+                dir: 'ltr',
+                badge: '// ANAS WEB STUDIO // 纪律铸就卓越与统治力',
+                title: '不止是一家普通的 <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">数字创意机构。</span>',
+                subtitle: '代码深耕，实战验证。<strong class="text-slate-900 dark:text-white">每个项目都精心打造。</strong> 为知名品牌提供定制网站与智能二维码菜单。',
+                btnRosters: '了解核心团队',
+                btnMerch: '探索官方服务',
+                copyTitle: '联系方式 // <span class="text-brand-red">一键复制</span>',
+                copyDesc: '点击下方任一按钮，即可将联系信息直接复制到剪贴板。',
+                btnCopy: '一键复制',
+                toastCopied: '已复制到剪贴板！',
+                offerText: '免费获取为您企业量身定制的交互式网站演示原型！',
+                badges: [
+                    '定制精品网站',
+                    '二维码智能菜单',
+                    '极速准时交付',
+                    '先免费试样',
+                    '一对一直接支持'
+                ]
+            },
+            ja: {
+                dir: 'ltr',
+                badge: '// ANAS WEB STUDIO // 規律が圧倒的な強さを生む',
+                title: '単なる制作会社を超えた <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">デジタルパワーハウス。</span>',
+                subtitle: 'コードから生まれ、実戦で実証。<strong class="text-slate-900 dark:text-white">妥協なきエンジニアリング。</strong> オーダーメイドWebサイト＆QRデジタルメニュー。',
+                btnRosters: 'チームを見る',
+                btnMerch: '公式サービス',
+                copyTitle: 'お問い合わせ // <span class="text-brand-red">ワンクリックコピー</span>',
+                copyDesc: 'ボタンをクリックして連絡先をクリップボードにコピーできます。',
+                btnCopy: 'コピーする',
+                toastCopied: 'クリップボードにコピーしました！',
+                offerText: 'あなたのビジネス専用の無料インタラクティブWebデモをプレゼント！',
+                badges: [
+                    'カスタムWebサイト',
+                    'QRデジタルメニュー',
+                    '高速スピード納品',
+                    '無料サンプル先行',
+                    'ダイレクトサポート'
+                ]
+            },
+            tr: {
+                dir: 'ltr',
+                badge: '// ANAS WEB STUDIO // DİSİPLİN HÂKİMİYET GETİRİR',
+                title: 'SIRADAN BİR AJANSTAN <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">ÇOK DAHA FAZLASI.</span>',
+                subtitle: 'Kod sunucusunda inşa edildi, canlı pazarda kanıtlandı. <strong class="text-slate-900 dark:text-white">Her proje özenle mühendislik eseridir.</strong> Özel web siteleri ve QR dijital menüler.',
+                btnRosters: 'EKİBİ TANIYIN',
+                btnMerch: 'RESMİ HİZMETLER',
+                copyTitle: 'İLETİŞİM // <span class="text-brand-red">TEK TIKLA KOPYALA</span>',
+                copyDesc: 'İletişim kanallarını panoya kopyalamak için aşağıdaki butonlara tıklayın.',
+                btnCopy: 'KOPYALA',
+                toastCopied: 'PANOYA KOPYALANDI!',
+                offerText: 'İşletmeniz için ÜCRETSİZ interaktif web sitesi demosu alın!',
+                badges: [
+                    'ÖZEL WEB SİTELERİ',
+                    'QR DİJİTAL MENÜLER',
+                    'HIZLI TESLİMAT',
+                    'ÖNCE ÜCRETSİZ NUMUNE',
+                    'DOĞRUDAN DESTEK'
+                ]
+            },
+            pt: {
+                dir: 'ltr',
+                badge: '// ANAS WEB STUDIO // DISCIPLINA CONSTROI DOMINÂNCIA',
+                title: 'MAIS QUE UMA <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">AGÊNCIA DIGITAL.</span>',
+                subtitle: 'Construído no código. Provado no mercado real. <strong class="text-slate-900 dark:text-white">Cada projeto projetado sob medida.</strong> Sites personalizados e menus digitais QR.',
+                btnRosters: 'CONHEÇA A EQUIPE',
+                btnMerch: 'SERVIÇOS OFICIAIS',
+                copyTitle: 'COMUNICAÇÃO // <span class="text-brand-red">CÓPIA EM 1 CLIQUE</span>',
+                copyDesc: 'Clique em qualquer botão para copiar os canais de contato para a área de transferência.',
+                btnCopy: 'COPIAR',
+                toastCopied: 'COPIADO PARA A ÁREA DE TRANSFERÊNCIA!',
+                offerText: 'Obtenha uma demonstração interativa GRATUITA para o seu negócio!',
+                badges: [
+                    'SITES PERSONALIZADOS',
+                    'MENUS DIGITAIS QR',
+                    'ENTREGA RÁPIDA',
+                    'AMOSTRA GRÁTIS',
+                    'SUPORTE DIRETO'
+                ]
+            },
+            bn: {
+                dir: 'ltr',
+                badge: '// আনাস ওয়েব স্টুডিও // শৃঙ্খলা আধিপত্য তৈরি করে',
+                title: 'শুধু একটি সাধারণ এজেন্সি নয় <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400">ডিজিটাল পাওয়ারহাউস।</span>',
+                subtitle: 'কোড সার্ভারে তৈরি। লাইভ বাজারে প্রমাণিত। <strong class="text-slate-900 dark:text-white">প্রতিটি প্রজেক্ট কঠোর পরিশ্রমে নির্মিত।</strong> কাস্টম ওয়েবসাইট ও কিউআর ডিজিটাল মেনু।',
+                btnRosters: 'টিম দেখুন',
+                btnMerch: 'অফিসিয়াল সার্ভিস',
+                copyTitle: 'যোগাযোগ করুন // <span class="text-brand-red">১-ক্লিক কপি</span>',
+                copyDesc: 'ক্লিপবোর্ডে যোগাযোগের তথ্য কপি করতে নিচের বাটনে ক্লিক করুন।',
+                btnCopy: 'কপি করুন',
+                toastCopied: 'ক্লিপবোর্ডে কপি হয়েছে!',
+                offerText: 'আপনার ব্যবসার জন্য একটি ফ্রি ইন্টারেক্টিভ ওয়েবসাইট ডেমো নিন!',
+                badges: [
+                    'কাস্টম ওয়েবসাইট',
+                    'কিউআর ডিজিটাল মেনু',
+                    'দ্রুত ডেলিভারি',
+                    'প্রথমে ফ্রি স্যাম্পল',
+                    'সরাসরি সাপোর্ট'
+                ]
+            }
+        };
+
+        /* 95+ Comprehensive Global Languages Matrix */
+        const allWorldLanguages = [
+            // Instant Native Packs
+            { code: 'en', name: 'English', native: 'English', flag: '🇬🇧', instant: true, cat: 'global' },
+            { code: 'hi', name: 'Hindi', native: 'हिन्दी', flag: '🇮🇳', instant: true, cat: 'indian' },
+            { code: 'ur', name: 'Urdu', native: 'اردو', flag: '🇵🇰', instant: true, dir: 'rtl', cat: 'rtl' },
+            { code: 'ar', name: 'Arabic', native: 'العربية', flag: '🇸🇦', instant: true, dir: 'rtl', cat: 'rtl' },
+            { code: 'fa', name: 'Persian', native: 'فارسی', flag: '🇮🇷', instant: true, dir: 'rtl', cat: 'rtl' },
+            { code: 'es', name: 'Spanish', native: 'Español', flag: '🇪🇸', instant: true, cat: 'global' },
+            { code: 'fr', name: 'French', native: 'Français', flag: '🇫🇷', instant: true, cat: 'global' },
+            { code: 'de', name: 'German', native: 'Deutsch', flag: '🇩🇪', instant: true, cat: 'global' },
+            { code: 'ru', name: 'Russian', native: 'Русский', flag: '🇷🇺', instant: true, cat: 'global' },
+            { code: 'zh-CN', codeAlias: 'zh', name: 'Chinese (Simplified)', native: '简体中文', flag: '🇨🇳', instant: true, cat: 'global' },
+            { code: 'ja', name: 'Japanese', native: '日本語', flag: '🇯🇵', instant: true, cat: 'global' },
+            { code: 'tr', name: 'Turkish', native: 'Türkçe', flag: '🇹🇷', instant: true, cat: 'global' },
+            { code: 'pt', name: 'Portuguese', native: 'Português', flag: '🇵🇹', instant: true, cat: 'global' },
+            { code: 'bn', name: 'Bengali', native: 'বাংলা', flag: '🇧🇩', instant: true, cat: 'indian' },
+
+            // Indian & Regional Subcontinent Languages
+            { code: 'pa', name: 'Punjabi', native: 'ਪੰਜਾਬੀ', flag: '🇮🇳', cat: 'indian' },
+            { code: 'gu', name: 'Gujarati', native: 'ગુજરાતી', flag: '🇮🇳', cat: 'indian' },
+            { code: 'mr', name: 'Marathi', native: 'मराठी', flag: '🇮🇳', cat: 'indian' },
+            { code: 'ta', name: 'Tamil', native: 'தமிழ்', flag: '🇮🇳', cat: 'indian' },
+            { code: 'te', name: 'Telugu', native: 'తెలుగు', flag: '🇮🇳', cat: 'indian' },
+            { code: 'kn', name: 'Kannada', native: 'ಕನ್ನಡ', flag: '🇮🇳', cat: 'indian' },
+            { code: 'ml', name: 'Malayalam', native: 'മലയാളം', flag: '🇮🇳', cat: 'indian' },
+            { code: 'ne', name: 'Nepali', native: 'नेपाली', flag: '🇳🇵', cat: 'indian' },
+            { code: 'si', name: 'Sinhala', native: 'සිංহල', flag: '🇱🇰', cat: 'indian' },
+            { code: 'sd', name: 'Sindhi', native: 'سنڌي', flag: '🇵🇰', dir: 'rtl', cat: 'rtl' },
+            { code: 'ps', name: 'Pashto', native: 'پښتو', flag: '🇦🇫', dir: 'rtl', cat: 'rtl' },
+
+            // Middle Eastern & Central Asian Languages
+            { code: 'he', name: 'Hebrew', native: 'עברית', flag: '🇮🇱', dir: 'rtl', cat: 'rtl' },
+            { code: 'ku', name: 'Kurdish', native: 'Kurdî', flag: '🇮🇶', cat: 'rtl' },
+            { code: 'ug', name: 'Uyghur', native: 'ئۇيغۇرچە', flag: '🇨🇳', dir: 'rtl', cat: 'rtl' },
+            { code: 'yi', name: 'Yiddish', native: 'ייִדיש', flag: '🇮🇱', dir: 'rtl', cat: 'rtl' },
+            { code: 'az', name: 'Azerbaijani', native: 'Azərbaycan', flag: '🇦🇿', cat: 'global' },
+            { code: 'uz', name: 'Uzbek', native: 'Oʻzbek', flag: '🇺🇿', cat: 'global' },
+            { code: 'kk', name: 'Kazakh', native: 'Қазақ', flag: '🇰🇿', cat: 'global' },
+            { code: 'tg', name: 'Tajik', native: 'Тоҷикӣ', flag: '🇹🇯', cat: 'global' },
+            { code: 'ky', name: 'Kyrgyz', native: 'Кыргызча', flag: '🇰🇬', cat: 'global' },
+
+            // East & Southeast Asia
+            { code: 'ko', name: 'Korean', native: '한국어', flag: '🇰🇷', cat: 'global' },
+            { code: 'id', name: 'Indonesian', native: 'Bahasa Indonesia', flag: '🇮🇩', cat: 'global' },
+            { code: 'ms', name: 'Malay', native: 'Bahasa Melayu', flag: '🇲🇾', cat: 'global' },
+            { code: 'th', name: 'Thai', native: 'ไทย', flag: '🇹🇭', cat: 'global' },
+            { code: 'vi', name: 'Vietnamese', native: 'Tiếng Việt', flag: '🇻🇳', cat: 'global' },
+            { code: 'tl', name: 'Filipino (Tagalog)', native: 'Tagalog', flag: '🇵🇭', cat: 'global' },
+            { code: 'my', name: 'Burmese', native: 'မြန်မာ', flag: '🇲🇲', cat: 'global' },
+            { code: 'km', name: 'Khmer', native: 'ខ្មែរ', flag: '🇰🇭', cat: 'global' },
+            { code: 'lo', name: 'Lao', native: 'ພາສາລາວ', flag: '🇱🇦', cat: 'global' },
+            { code: 'mn', name: 'Mongolian', native: 'Монгол', flag: '🇲🇳', cat: 'global' },
+
+            // European Languages
+            { code: 'it', name: 'Italian', native: 'Italiano', flag: '🇮🇹', cat: 'global' },
+            { code: 'nl', name: 'Dutch', native: 'Nederlands', flag: '🇳🇱', cat: 'global' },
+            { code: 'pl', name: 'Polish', native: 'Polski', flag: '🇵🇱', cat: 'global' },
+            { code: 'uk', name: 'Ukrainian', native: 'Українська', flag: '🇺🇦', cat: 'global' },
+            { code: 'ro', name: 'Romanian', native: 'Română', flag: '🇷🇴', cat: 'global' },
+            { code: 'el', name: 'Greek', native: 'Ελληνικά', flag: '🇬🇷', cat: 'global' },
+            { code: 'cs', name: 'Czech', native: 'Čeština', flag: '🇨🇿', cat: 'global' },
+            { code: 'sv', name: 'Swedish', native: 'Svenska', flag: '🇸🇪', cat: 'global' },
+            { code: 'hu', name: 'Hungarian', native: 'Magyar', flag: '🇭🇺', cat: 'global' },
+            { code: 'da', name: 'Danish', native: 'Dansk', flag: '🇩🇰', cat: 'global' },
+            { code: 'fi', name: 'Finnish', native: 'Suomi', flag: '🇫🇮', cat: 'global' },
+            { code: 'no', name: 'Norwegian', native: 'Norsk', flag: '🇳🇴', cat: 'global' },
+            { code: 'sk', name: 'Slovak', native: 'Slovenčina', flag: '🇸🇰', cat: 'global' },
+            { code: 'bg', name: 'Bulgarian', native: 'Български', flag: '🇧🇬', cat: 'global' },
+            { code: 'hr', name: 'Croatian', native: 'Hrvatski', flag: '🇭🇷', cat: 'global' },
+            { code: 'sr', name: 'Serbian', native: 'Српски', flag: '🇷🇸', cat: 'global' },
+            { code: 'sq', name: 'Albanian', native: 'Shqip', flag: '🇦🇱', cat: 'global' },
+            { code: 'lt', name: 'Lithuanian', native: 'Lietuvių', flag: '🇱🇹', cat: 'global' },
+            { code: 'lv', name: 'Latvian', native: 'Latviešu', flag: '🇱🇻', cat: 'global' },
+            { code: 'et', name: 'Estonian', native: 'Eesti', flag: '🇪🇪', cat: 'global' },
+            { code: 'sl', name: 'Slovenian', native: 'Slovenščina', flag: '🇸🇮', cat: 'global' },
+            { code: 'ga', name: 'Irish', native: 'Gaeilge', flag: '🇮🇪', cat: 'global' },
+            { code: 'is', name: 'Icelandic', native: 'Íslenska', flag: '🇮🇸', cat: 'global' },
+            { code: 'mt', name: 'Maltese', native: 'Malti', flag: '🇲🇹', cat: 'global' },
+            { code: 'bs', name: 'Bosnian', native: 'Bosanski', flag: '🇧🇦', cat: 'global' },
+            { code: 'mk', name: 'Macedonian', native: 'Македонски', flag: '🇲🇰', cat: 'global' },
+            { code: 'ca', name: 'Catalan', native: 'Català', flag: '🇪🇸', cat: 'global' },
+            { code: 'gl', name: 'Galician', native: 'Galego', flag: '🇪🇸', cat: 'global' },
+            { code: 'eu', name: 'Basque', native: 'Euskara', flag: '🇪🇸', cat: 'global' },
+            { code: 'cy', name: 'Welsh', native: 'Cymraeg', flag: '🇬🇧', cat: 'global' },
+            { code: 'be', name: 'Belarusian', native: 'Беларуская', flag: '🇧🇾', cat: 'global' },
+            { code: 'hy', name: 'Armenian', native: 'Հայերեն', flag: '🇦🇲', cat: 'global' },
+            { code: 'ka', name: 'Georgian', native: 'ქართული', flag: '🇬🇪', cat: 'global' },
+
+            // African & Global Oceanic Languages
+            { code: 'sw', name: 'Swahili', native: 'Kiswahili', flag: '🇰🇪', cat: 'global' },
+            { code: 'af', name: 'Afrikaans', native: 'Afrikaans', flag: '🇿🇦', cat: 'global' },
+            { code: 'am', name: 'Amharic', native: 'አማርኛ', flag: '🇪🇹', cat: 'global' },
+            { code: 'ha', name: 'Hausa', native: 'Hausa', flag: '🇳🇬', cat: 'global' },
+            { code: 'yo', name: 'Yoruba', native: 'Èdè Yorùbá', flag: '🇳🇬', cat: 'global' },
+            { code: 'ig', name: 'Igbo', native: 'Asụsụ Igbo', flag: '🇳🇬', cat: 'global' },
+            { code: 'zu', name: 'Zulu', native: 'isiZulu', flag: '🇿🇦', cat: 'global' },
+            { code: 'xh', name: 'Xhosa', native: 'isiXhosa', flag: '🇿🇦', cat: 'global' },
+            { code: 'so', name: 'Somali', native: 'Soomaaliga', flag: '🇸🇴', cat: 'global' },
+            { code: 'sn', name: 'Shona', native: 'chiShona', flag: '🇿🇼', cat: 'global' },
+            { code: 'rw', name: 'Kinyarwanda', native: 'Ikinyarwanda', flag: '🇷🇼', cat: 'global' },
+            { code: 'mg', name: 'Malagasy', native: 'Malagasy', flag: '🇲🇬', cat: 'global' },
+            { code: 'eo', name: 'Esperanto', native: 'Esperanto', flag: '🌐', cat: 'global' },
+            { code: 'la', name: 'Latin', native: 'Latina', flag: '🏛️', cat: 'global' }
+        ];
+
+        let currentLang = 'en';
+        let currentFilterCategory = 'all';
+
+        /* Show Custom Animated Toast */
+        function showNotificationToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+            toast.classList.add('opacity-100', '-translate-y-2');
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                toast.classList.remove('opacity-100', '-translate-y-2');
+            }, 2500);
+        }
+
+        /* Language Modal Logic */
+        function openLanguageModal() {
+            const modal = document.getElementById('language-modal');
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100', 'pointer-events-auto');
+            });
+            renderLanguages(allWorldLanguages);
+            setTimeout(() => {
+                document.getElementById('lang-search-input').focus();
+            }, 100);
+        }
+
+        function closeLanguageModal() {
+            const modal = document.getElementById('language-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        /* Category Filter for Language Modal */
+        function setLangCategory(category, element) {
+            currentFilterCategory = category;
+            document.querySelectorAll('.lang-cat-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-red', 'text-white', 'active');
+                btn.classList.add('bg-brand-panelBg', 'text-gray-300');
+            });
+            if(element) {
+                element.classList.add('bg-brand-red', 'text-white', 'active');
+                element.classList.remove('bg-brand-panelBg', 'text-gray-300');
+            }
+            filterLanguages();
+        }
+
+        /* Search Filter */
+        function filterLanguages() {
+            const query = (document.getElementById('lang-search-input').value || '').trim().toLowerCase();
+            const filtered = allWorldLanguages.filter(item => {
+                const matchCategory = 
+                    currentFilterCategory === 'all' ? true :
+                    currentFilterCategory === 'instant' ? item.instant :
+                    currentFilterCategory === 'indian' ? item.cat === 'indian' :
+                    currentFilterCategory === 'rtl' ? item.dir === 'rtl' : true;
+
+                const matchQuery = 
+                    !query ||
+                    item.name.toLowerCase().includes(query) ||
+                    item.native.toLowerCase().includes(query) ||
+                    item.code.toLowerCase().includes(query);
+
+                return matchCategory && matchQuery;
+            });
+
+            renderLanguages(filtered);
+            document.getElementById('lang-count-badge').innerText = `Showing ${filtered.length} of ${allWorldLanguages.length} Languages`;
+        }
+
+        /* Render Language Cards in Modal */
+        function renderLanguages(list) {
+            const grid = document.getElementById('languages-grid');
+            if(!grid) return;
+
+            if(list.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-gray-500 font-orbitron">
+                        <i class="fa-solid fa-earth-americas text-4xl mb-3 text-brand-red opacity-50"></i>
+                        <p class="text-sm">NO MATCHING LANGUAGES FOUND</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = list.map(lang => {
+                const isSelected = currentLang === lang.code || (lang.codeAlias && currentLang === lang.codeAlias);
+                return `
+                    <button onclick="selectLanguage('${lang.code}')" class="p-2.5 sm:p-3 bg-white dark:bg-brand-panelBg hover:bg-slate-100 dark:hover:bg-slate-800 border ${isSelected ? 'border-brand-red bg-brand-red/5 glow-red-sm' : 'border-slate-200 dark:border-brand-panelBorder'} hover:border-brand-red rounded-lg transition-all flex items-center justify-between text-left group clip-angled-sm shadow-sm">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                            <span class="text-xl shrink-0">${lang.flag}</span>
+                            <div class="min-w-0">
+                                <div class="font-bold text-xs sm:text-sm text-slate-950 dark:text-white truncate group-hover:text-brand-red transition-colors">${lang.native}</div>
+                                <div class="text-[10px] text-slate-500 dark:text-gray-400 truncate">${lang.name}</div>
+                            </div>
+                        </div>
+                        <div class="shrink-0 ml-2">
+                            ${lang.instant ? 
+                                '<span class="text-[8px] bg-brand-red/10 text-brand-red font-mono px-1.5 py-0.5 rounded font-bold border border-brand-red/30">⚡ INSTANT</span>' : 
+                                '<span class="text-[8px] bg-blue-50 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400 font-mono px-1.5 py-0.5 rounded font-bold border border-blue-200 dark:border-blue-500/30">AI TRANSLATE</span>'
+                            }
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        /* Google Translate Trigger Logic */
+        function triggerGoogleTranslate(langCode) {
+            if (langCode === 'en') {
+                const iframe = document.querySelector('iframe.goog-te-banner-frame');
+                if (iframe) {
+                    const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    const restoreBtn = innerDoc.querySelector('button');
+                    if (restoreBtn) restoreBtn.click();
+                }
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + location.hostname + "; path=/;";
+                return;
+            }
+
+            const selectEl = document.querySelector('.goog-te-combo');
+            if (selectEl) {
+                selectEl.value = langCode;
+                selectEl.dispatchEvent(new Event('change'));
+            } else {
+                document.cookie = `googtrans=/en/${langCode}; path=/;`;
+                document.cookie = `googtrans=/en/${langCode}; domain=${location.hostname}; path=/;`;
+                location.reload();
+            }
+        }
+
+        /* Select Any Language (From Modal or Quick Pills) */
+        function selectLanguage(code) {
+            const langItem = allWorldLanguages.find(l => l.code === code || l.codeAlias === code);
+            const targetCode = (langItem && langItem.codeAlias) || code;
+
+            if (translations[targetCode]) {
+                // If Google Translate was previously active, reset it
+                triggerGoogleTranslate('en');
+                setLanguage(targetCode);
+            } else {
+                // Apply Google Translate for non-native languages
+                setLanguage('en'); // Reset to English base for accurate translation
+                triggerGoogleTranslate(code);
+                currentLang = code;
+                if(langItem) {
+                    document.getElementById('header-lang-display').innerText = `${langItem.name.toUpperCase()}`;
+                    showNotificationToast(`Translating into ${langItem.name}...`);
+                }
+            }
+
+            try {
+                localStorage.setItem('anas_selected_lang', code);
+            } catch(e) {}
+
+            closeLanguageModal();
+        }
+
+        /* Native Language Switching Logic */
+        function setLanguage(lang, element) {
+            const t = translations[lang] || translations['en'];
+            currentLang = lang;
+
+            document.documentElement.setAttribute('dir', t.dir);
+            document.getElementById('tagline-badge').innerHTML = t.badge;
+            document.getElementById('hero-title').innerHTML = t.title;
+            document.getElementById('hero-subtitle').innerHTML = t.subtitle;
+            document.getElementById('btn-rosters').innerText = t.btnRosters;
+            document.getElementById('btn-merch').innerText = t.btnMerch;
+            document.getElementById('copy-title').innerHTML = t.copyTitle;
+            document.getElementById('copy-desc').innerText = t.copyDesc;
+            document.getElementById('offer-text').innerText = t.offerText;
+
+            document.querySelectorAll('.btn-copy-label').forEach(lbl => {
+                lbl.innerText = t.btnCopy;
+            });
+
+            t.badges.forEach((txt, idx) => {
+                const el = document.querySelector(`#badge-${idx} span`);
+                if(el) el.innerText = txt;
+            });
+
+            // Update Header Display
+            const headerDisplay = document.getElementById('header-lang-display');
+            if (headerDisplay) {
+                const langItem = allWorldLanguages.find(l => l.code === lang || l.codeAlias === lang);
+                headerDisplay.innerText = langItem ? `${lang.toUpperCase()} // ${langItem.native}` : lang.toUpperCase();
+            }
+
+            /* Update active nav button state */
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-red', 'text-white', 'active');
+                btn.classList.add('text-slate-700', 'dark:text-gray-300');
+            });
+            if(element) {
+                element.classList.add('bg-brand-red', 'text-white', 'active');
+                element.classList.remove('text-slate-700', 'dark:text-gray-300');
+            } else {
+                // Highlight corresponding quick button if available
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    if(btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`'${lang}'`)) {
+                        btn.classList.add('bg-brand-red', 'text-white', 'active');
+                        btn.classList.remove('text-slate-700', 'dark:text-gray-300');
+                    }
+                });
+            }
+
+            try {
+                localStorage.setItem('anas_selected_lang', lang);
+            } catch(e) {}
+        }
+
+        /* Toggle Light / Dark Mode */
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            try {
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('anas_theme', isDark ? 'dark' : 'light');
+            } catch(e) {}
+        }
+
+        /* Mobile Menu Toggle */
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        /* Scroll Smoothly to Copy Section */
+        function scrollToCopySection() {
+            document.getElementById('copy-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        /* Clipboard Copy Logic with Notification Toast */
+        function copyToClipboard(text) {
+            function showToast() {
+                const toast = document.getElementById('toast');
+                document.getElementById('toast-message').innerText = translations[currentLang].toastCopied;
+                toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                toast.classList.add('opacity-100', '-translate-y-2');
+
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                    toast.classList.remove('opacity-100', '-translate-y-2');
+                }, 2500);
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(showToast).catch(() => {
+                    const tempInput = document.createElement('textarea');
+                    tempInput.value = text;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+                    showToast();
+                });
+            } else {
+                const tempInput = document.createElement('textarea');
+                tempInput.value = text;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                showToast();
+            }
+        }
+
+        window.onload = function () {
+            const container = document.getElementById('physics-container');
+            const { Engine, Runner, Bodies, Composite, Mouse, MouseConstraint, Events } = Matter;
+
+            const engine = Engine.create();
+            const world = engine.world;
+
+            let width = container.clientWidth;
+            let height = container.clientHeight;
+
+            // Boundaries
+            const wallOptions = { isStatic: true, friction: 0.3, restitution: 0.6 };
+            let ground = Bodies.rectangle(width / 2, height + 20, width * 2, 40, wallOptions);
+            let leftWall = Bodies.rectangle(-20, height / 2, 40, height * 2, wallOptions);
+            let rightWall = Bodies.rectangle(width + 20, height / 2, 40, height * 2, wallOptions);
+            let ceiling = Bodies.rectangle(width / 2, -20, width * 2, 40, wallOptions);
+
+            Composite.add(world, [ground, leftWall, rightWall, ceiling]);
+
+            // Convert HTML Elements into Matter.js Rigid Bodies
+            const badgeElements = document.querySelectorAll('.physics-card');
+            const physicsBodies = [];
+
+            badgeElements.forEach((elem, index) => {
+                const rect = elem.getBoundingClientRect();
+                const x = 50 + Math.random() * Math.max(100, width - 200);
+                const y = 40 + (index * 45);
+
+                const body = Bodies.rectangle(x, y, rect.width || 160, rect.height || 45, {
+                    restitution: 0.75,
+                    friction: 0.1,
+                    density: 0.003
+                });
+
+                body.htmlElem = elem;
+                physicsBodies.push(body);
+                Composite.add(world, body);
+            });
+
+            // Interactive Dragging Constraint
+            const mouse = Mouse.create(container);
+            
+            // Allow page scrolling over the physics container
+            if (mouse.mousewheel) {
+                mouse.element.removeEventListener('wheel', mouse.mousewheel);
+                mouse.element.removeEventListener('mousewheel', mouse.mousewheel);
+                mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel);
+            }
+
+            const mouseConstraint = MouseConstraint.create(engine, {
+                mouse: mouse,
+                constraint: {
+                    stiffness: 0.2,
+                    render: { visible: false }
+                }
+            });
+
+            Composite.add(world, mouseConstraint);
+
+            // Synchronize Matter.js Physical Body Positions with HTML Transforms
+            Events.on(engine, 'afterUpdate', () => {
+                physicsBodies.forEach(body => {
+                    const { x, y } = body.position;
+                    const angle = body.angle;
+                    const elem = body.htmlElem;
+                    elem.style.transform = `translate(${x - elem.offsetWidth / 2}px, ${y - elem.offsetHeight / 2}px) rotate(${angle}rad)`;
+                });
+            });
+
+            // Start Physics Engine
+            const runner = Runner.create();
+            Runner.run(runner, engine);
+
+            // Responsive Screen Adjustments
+            window.addEventListener('resize', () => {
+                width = container.clientWidth;
+                height = container.clientHeight;
+                Matter.Body.setPosition(ground, { x: width / 2, y: height + 20 });
+                Matter.Body.setPosition(rightWall, { x: width + 20, y: height / 2 });
+                Matter.Body.setPosition(leftWall, { x: -20, y: height / 2 });
+                Matter.Body.setPosition(ceiling, { x: width / 2, y: -20 });
+            });
+
+            // Initialize languages modal grid
+            renderLanguages(allWorldLanguages);
+
+            // Close modal on backdrop click
+            const langModal = document.getElementById('language-modal');
+            if (langModal) {
+                langModal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeLanguageModal();
+                    }
+                });
+            }
+
+            // Restore saved theme if user previously toggled
+            try {
+                const savedTheme = localStorage.getItem('anas_theme');
+                if (savedTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            } catch(e) {}
+
+            // Restore saved language if any
+            try {
+                const savedLang = localStorage.getItem('anas_selected_lang');
+                if (savedLang && savedLang !== 'en') {
+                    if (translations[savedLang]) {
+                        setLanguage(savedLang);
+                    }
+                }
+            } catch(e) {}
+        };
+    </script>
+</body>
+</html>
